@@ -2,5 +2,5 @@
 
 class Cuisine < ApplicationRecord
   has_many :restaurant
-  validate :name, presense: true, length: { minimum: 5 }
+  validates :name, presence: true, length: { minimum: 1 }
 end

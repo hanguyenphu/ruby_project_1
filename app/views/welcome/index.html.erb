@@ -1,2 +1,50 @@
+<nav class="navbar navbar-expand-lg navbar-light" id="nav-bar">
+  <a class="navbar-brand" href="/">Restaurant List</a>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+            <a class="nav-link" href="/restaurants">Restaurants</a>
+      </li>
+       <li class="nav-item ">
+            <a class="nav-link" href="/cuisines/show">Cuisines</a>
+      </li>
+      <li class="nav-item">
+            <a class="nav-link " href="/reviewers/show" >Reviewers</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+<div class="Container">
+  <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+          <img src="/images/chain-close-up-glass-1036857.jpg" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="/images/cuisine-cutlery-delicious-299348.jpg" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="/images/chairs-coffee-shop-drinking-glasses-67468.jpg" class="d-block w-100" alt="...">
+      </div>
+    </div>
+  </div>
 
-<h1>Hello, Rails!</h1>
+  <div class="jumbotron">
+  <h1 class="display-4">About This Application</h1>
+  <p class="lead">This is a simple Ruby on Rails application fetching data from <span  class="font-weight-bold">Faker</span>. You will see the list of <span  class="font-weight-bold">restaurants</span> over the world as well as all special <span  class="font-weight-bold">cuisines</span> that you have never seen before</p>
+  <p class="lead">You can also explore every single restaurant and see what <span  class="font-weight-bold">reviewers</span> talk about it though the <span  class="font-weight-bold">comments</span> system</p>
+  <hr class="my-4">
+  <a class="btn btn-primary btn-lg" href="/restaurants/" role="button">Start Exploring!</a>
+</div>
+
+</div>

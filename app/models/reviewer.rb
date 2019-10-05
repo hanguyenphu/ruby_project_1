@@ -2,6 +2,6 @@
 
 class Reviewer < ApplicationRecord
   has_many :comment
-  validate :name, presense: true
-  validate :email, format: { with: URI::MailTo::EMAIL_REGEXP }
+  validates :name,  presence: true, length: { minimum: 1 }
+  validates :email, presence: true
 end

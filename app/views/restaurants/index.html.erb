@@ -10,7 +10,7 @@
           <a class="nav-link" href="/">Home </a>
         </li>
         <li class="nav-item active">
-          <a class="nav-link" href="/restaurants">Restaurants</a>
+          <a class="nav-link" href="/restaurants/">Restaurants</a>
         </li>
         <li class="nav-item ">
           <a class="nav-link" href="/cuisines/show">Cuisines</a>
@@ -26,20 +26,39 @@
     </div>
   </nav>
   <div class="container-fluid" >
+  <div class="row col-md-12 mt-5">
+        <div class="col-md-8">
+        </div>
 
+        <div class="col-md-4">
+        <%== pagy_bootstrap_nav(@pagy) %>
+        </div>
+
+  </div>
+
+    <% @restaurants.each do |restaurant| %>
           <div class="card" style="width: 700px;" >
-              <img class="card-img-top" src="<%= @restaurant.image %>" alt="Card image cap">
+
               <div class="card-body">
-                <h5 class="card-title"><%= @restaurant.name %></h5>
-                 <p ><span class="lead">Cuisine:</span>  <%= @restaurant.cuisine.name %></p>
+                <h5 class="card-title"><%= restaurant.name %></h5>
+                 <p ><span class="lead">Cuisine:</span>  <%= restaurant.cuisine.name %></p>
 
                 <p class="lead">Description:</p>
-                <p class="card-text"> <%= @restaurant.description %></p>
+                <p class="card-text"> <%= truncate(restaurant.description, length: 200, separator: ' ') %></p>
                 <hr class="my-4">
                 <p class="lead">Address:</p>
-                  <p class="card-text"><%= @restaurant.address %></p>
-              <a href="/restaurants/" class="btn btn-secondary active" role="button" aria-pressed="true">Back</a>
+                  <p class="card-text"><%= restaurant.address %></p>
+                   <a href="/restaurants/<%= restaurant.id %>" class="btn btn-primary active" role="button" aria-pressed="true">Show</a>
               </div>
           </div>
+    <% end %>
 
+  </div>
+   <div class="row col-md-12 mt-5">
+        <div class="col-md-2">
+
+        </div>
+         <div class="col-md-8">
+          <%== pagy_bootstrap_nav(@pagy) %>
+        </div>
   </div>
