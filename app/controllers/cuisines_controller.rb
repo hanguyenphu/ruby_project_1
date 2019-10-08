@@ -7,7 +7,7 @@ class CuisinesController < ApplicationController
 
   def show
     @cuisine = Cuisine.find(params[:id])
-    @cuisine.collection_restaurants
+    @restaurants = Restaurant.where(cuisine_id: @cuisine.id)
   end
 
   def cuisine_params

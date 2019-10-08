@@ -16,7 +16,7 @@
           <a class="nav-link" href="/cuisines/">Cuisines</a>
         </li>
         <li class="nav-item ">
-          <a class="nav-link " href="/reviewers/show" >Reviewers </a>
+          <a class="nav-link " href="/reviewers/index" >Reviewers </a>
         </li>
       </ul>
       <form class="form-inline my-2 my-lg-0">
@@ -32,7 +32,17 @@
                 <p class="lead">Description:</p>
                 <p class="card-text"> <%= @cuisine.description %></p>
                 <hr class="my-4">
+                <p class="lead">Restaurants:</p>
+                <div class="list-group">
+                     <%@restaurants.each do |restaurant|%>
+                         <a href="/restaurants/<%=restaurant.id%>" class="list-group-item list-group-item-action">
+                                <%=restaurant.name%>
+                        </a>
+                    <% end %>
+                </div>
+                <hr class="my-4">
                 <a href="/cuisines/" class="btn btn-secondary active" role="button" aria-pressed="true">Back</a>
               </div>
           </div>
+
   </div>

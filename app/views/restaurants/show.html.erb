@@ -31,7 +31,7 @@
               <img class="card-img-top" src="<%= @restaurant.image %>" alt="Card image cap">
               <div class="card-body">
                 <h5 class="card-title"><%= @restaurant.name %></h5>
-                 <p ><span class="lead">Cuisine:</span>  <%= @restaurant.cuisine.name %></p>
+                 <p ><span class="lead">Cuisine:</span> <a href="/cuisines/<%= @restaurant.cuisine.id %>" class="badge badge-success"><%= @restaurant.cuisine.name %></a> </p>
 
                 <p class="lead">Description:</p>
                 <p class="card-text"> <%= @restaurant.description %></p>
@@ -41,5 +41,13 @@
               <a href="/restaurants/" class="btn btn-secondary active" role="button" aria-pressed="true">Back</a>
               </div>
           </div>
-
+         <%@comments.each do |comment|%>
+          <div class="card" style="width: 700px;">
+              <div class="card-body">
+                <h5 class="card-title"><%=comment.reviewer.name%></h5>
+                <p class="card-text"><%=comment.content%></p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+              </div>
+          </div>
+        <% end %>
   </div>

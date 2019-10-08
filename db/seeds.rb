@@ -27,10 +27,12 @@ require 'faker'
       image: Faker::LoremPixel.image(size: '700x300', is_gray: false)
     )
 
-    @comment = @reviewer.comment.create(
-      content: Faker::Restaurant.review,
-      restaurant_id: @restaurant.id
-    )
+    5.times do
+      @comment = @reviewer.comment.create(
+        content: Faker::Restaurant.review,
+        restaurant_id: @restaurant.id
+      )
+    end
   end
 end
 
