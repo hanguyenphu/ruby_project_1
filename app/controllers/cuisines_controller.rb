@@ -2,7 +2,12 @@
 
 class CuisinesController < ApplicationController
   def index
-    @pagy, @cuisines = pagy(Cuisine.all, items: 10)
+    @pagy, @cuisines = if params[:name]
+      pagy(Cuisine.where('name LIKE ?', "%#{params[:name]}%"), items: 10)
+    else
+      pagy(Cuisine.all, items: 10)
+    end
+    # @pagy, @cuisines = pagy(Cuisine.all, items: 10)
   end
 
   def show

@@ -21,8 +21,17 @@
 }
 html, body {
     font-family: 'Raleway', sans-serif;
+    height: 100%;
 }
 
+
+#home-page-container{
+    color:#ffff;
+    background-image: linear-gradient(to right top, #43c059, #00bd8c, #00b6b6, #00abce, #009dd2, #2a9ed4, #3ea0d5, #4da1d6, #22b3e0, #00c4e3, #00d4df, #0ae3d5);
+    background-repeat: no-repeat;
+    background-size: auto;
+    height:100%
+}
 .card{
     margin-top:30px;
     margin-left: auto;

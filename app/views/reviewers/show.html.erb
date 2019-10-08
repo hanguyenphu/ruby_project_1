@@ -6,7 +6,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item ">
-        <a class="nav-link" href="#">Home </a>
+        <a class="nav-link" href="/welcome/index">Home </a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/restaurants/">Restaurants</a>
@@ -15,12 +15,30 @@
         <a class="nav-link" href="/cuisines/">Cuisines</a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link " href="/reviewers/show" >Reviewers </a>
+        <a class="nav-link " href="/reviewers/" >Reviewers </a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
+     <form class="form-inline my-2 my-lg-0" method="get" action="/reviewers">
+        <input class="form-control mr-sm-2" name="name" id="name" type="search" placeholder="Reviewer's name" aria-label="Search">
+        <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
     </form>
   </div>
 </nav>
+<div class="container-fluid" >
+          <div class="card" style="width: 700px;" >
+              <div class="card-body">
+                <h5 class="card-title"><%= @reviewer.name %></h5>
+                 <p ><span class="lead">Email:</span> <%= @reviewer.email %> </p>
+              </div>
+          </div>
+
+         <%@comments.each do |comment|%>
+          <div class="card" style="width: 700px;">
+              <div class="card-body">
+                <h5 class="card-title"><a href="/restaurants/<%=comment.restaurant.id%>"><%=comment.restaurant.name%></a></h5>
+                <p class="card-text"><%=comment.content%></p>
+                <p>Posted: <%=comment.created_at%></p>
+              </div>
+          </div>
+        <% end %>
+  </div>

@@ -15,11 +15,11 @@
         <a class="nav-link" href="/cuisines/">Cuisines</a>
       </li>
       <li class="nav-item ">
-        <a class="nav-link " href="/reviewers/show" >Reviewers </a>
+        <a class="nav-link " href="/reviewers/" >Reviewers </a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    <form class="form-inline my-2 my-lg-0" method="get" accept-charset="UTF-8" action="/cuisines" >
+      <input class="form-control mr-sm-2" type="search" id="name" name="name" placeholder="Cuisine name" aria-label="Search">
       <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
     </form>
   </div>
@@ -34,7 +34,14 @@
         </div>
 
   </div>
+    <% if @cuisines.count == 0 %>
+     <div class="row justify-content-md-center">
+        <div class="col-md-auto">
+          <p class="lead text-danger">There is no Cuisine found!</p>
+        </div>
+    </div>
 
+    <% else %>
     <% @cuisines.each do |cuisine| %>
           <div class="card" style="width: 700px;" >
 
@@ -47,7 +54,7 @@
               </div>
           </div>
     <% end %>
-
+    <%end%>
   </div>
    <div class="row col-md-12 mt-5">
         <div class="col-md-2">

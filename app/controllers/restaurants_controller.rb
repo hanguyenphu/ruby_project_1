@@ -2,7 +2,11 @@
 
 class RestaurantsController < ApplicationController
   def index
-    @pagy, @restaurants = pagy(Restaurant.all, items: 10)
+    @pagy, @restaurants = if params[:name]
+                            pagy(Restaurant.where('name LIKE ?', "%#{params[:name]}%"), items: 10)
+                          else
+                            pagy(Restaurant.all, items: 10)
+    end
   end
 
   def show

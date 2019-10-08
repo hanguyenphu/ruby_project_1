@@ -15,29 +15,56 @@
         <a class="nav-link" href="/cuisines/">Cuisines</a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link " href="/reviewers/index" >Reviewers </a>
+        <a class="nav-link " href="/reviewers/" >Reviewers </a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    <form class="form-inline my-2 my-lg-0" method="get" action="/reviewers">
+      <input class="form-control mr-sm-2" name="name" id="name" type="search" placeholder="Reviewer's name" aria-label="Search">
       <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
     </form>
   </div>
 </nav>
-    <p>Hello World</p>
+      <div class="container-fluid" >
+  <div class="row col-md-12 mt-5">
+        <div class="col-md-8">
+        </div>
 
-    <% @reviewers.each do |reviewer| %>
-          <div class="card" style="width: 700px;" >
-              <div class="card-body">
-                <h5 class="card-title"><%= reviewer.name %></h5>
-                <p class="lead">Email:</p>
-                <p class="card-text"> <%= reviewer.email %></p>
-                <hr class="my-4">
-                <a href="/cuisines/<%= reviewer.id %>" class="btn btn-primary active" role="button" aria-pressed="true">More Details</a>
-              </div>
-          </div>
-    <% end %>
+        <div class="col-md-4">
+        <%== pagy_bootstrap_nav(@pagy) %>
+        </div>
 
+  </div>
+
+   <% if @reviewers.count == 0 %>
+     <div class="row justify-content-md-center">
+        <div class="col-md-auto">
+          <p class="lead text-danger">There is no Reviewer found!</p>
+        </div>
+    </div>
+
+    <% else %>
+
+      <% @reviewers.each do |reviewer| %>
+            <div class="card" style="width: 700px;" >
+                <div class="card-body">
+                  <h5 class="card-title"><%= reviewer.name %></h5>
+                  <p class="lead">Email: <%= reviewer.email %></p>
+                  <hr class="my-4">
+                  <a href="/reviewers/<%= reviewer.id %>" class="btn btn-primary active" role="button" aria-pressed="true">More Details</a>
+                </div>
+            </div>
+      <% end %>
+     <% end %>
+
+</div>
+   <div class="row col-md-12 mt-5">
+        <div class="col-md-2">
+
+        </div>
+         <div class="col-md-8">
+          <%== pagy_bootstrap_nav(@pagy) %>
+        </div>
+  </div>
 
 
 

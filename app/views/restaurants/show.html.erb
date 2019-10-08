@@ -16,11 +16,11 @@
           <a class="nav-link" href="/cuisines/">Cuisines</a>
         </li>
         <li class="nav-item ">
-          <a class="nav-link " href="/reviewers/show" >Reviewers </a>
+          <a class="nav-link " href="/reviewers/" >Reviewers </a>
         </li>
       </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <form class="form-inline my-2 my-lg-0" method="get" accept-charset="UTF-8" action="/restaurants" >
+        <input class="form-control mr-sm-2"  name="name" id="name" type="search" placeholder="Restaurant name" aria-label="Search">
         <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
       </form>
     </div>
@@ -28,7 +28,7 @@
   <div class="container-fluid" >
 
           <div class="card" style="width: 700px;" >
-              <img class="card-img-top" src="<%= @restaurant.image %>" alt="Card image cap">
+              <img class="card-img-top" src="<%= @restaurant.image %>" alt="Restaurant Image">
               <div class="card-body">
                 <h5 class="card-title"><%= @restaurant.name %></h5>
                  <p ><span class="lead">Cuisine:</span> <a href="/cuisines/<%= @restaurant.cuisine.id %>" class="badge badge-success"><%= @restaurant.cuisine.name %></a> </p>
@@ -44,9 +44,9 @@
          <%@comments.each do |comment|%>
           <div class="card" style="width: 700px;">
               <div class="card-body">
-                <h5 class="card-title"><%=comment.reviewer.name%></h5>
+                <h5 class="card-title"><a href="/reviewers/<%=comment.reviewer.id%>" class=""><%=comment.reviewer.name%></a></h5>
                 <p class="card-text"><%=comment.content%></p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                <p>Posted: <%=comment.created_at%></p>
               </div>
           </div>
         <% end %>

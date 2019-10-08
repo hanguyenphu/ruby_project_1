@@ -16,11 +16,11 @@
           <a class="nav-link" href="/cuisines/">Cuisines</a>
         </li>
         <li class="nav-item ">
-          <a class="nav-link " href="/reviewers/show" >Reviewers </a>
+          <a class="nav-link " href="/reviewers/" >Reviewers </a>
         </li>
       </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <form class="form-inline my-2 my-lg-0" method="get" accept-charset="UTF-8" action="/restaurants" >
+        <input class="form-control mr-sm-2"  name="name" id="name" type="search" placeholder="Restaurant name" aria-label="Search">
         <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
       </form>
     </div>
@@ -36,22 +36,32 @@
 
   </div>
 
-    <% @restaurants.each do |restaurant| %>
-          <div class="card" style="width: 700px;" >
+  <% if @restaurants.count == 0 %>
+     <div class="row justify-content-md-center">
+        <div class="col-md-auto">
+          <p class="lead text-danger">There is no Restaurant found!</p>
+        </div>
+    </div>
 
-              <div class="card-body">
-                <h5 class="card-title"><%= restaurant.name %></h5>
-                 <p ><span class="lead">Cuisine:</span>  <%= restaurant.cuisine.name %></p>
+    <% else %>
 
-                <p class="lead">Description:</p>
-                <p class="card-text"> <%= truncate(restaurant.description, length: 200, separator: ' ') %></p>
-                <hr class="my-4">
-                <p class="lead">Address:</p>
-                  <p class="card-text"><%= restaurant.address %></p>
-                   <a href="/restaurants/<%= restaurant.id %>" class="btn btn-primary active" role="button" aria-pressed="true">Explore</a>
-              </div>
-          </div>
-    <% end %>
+      <% @restaurants.each do |restaurant| %>
+            <div class="card" style="width: 700px;" >
+
+                <div class="card-body">
+                  <h5 class="card-title"><%= restaurant.name %></h5>
+                  <p ><span class="lead">Cuisine:</span>  <%= restaurant.cuisine.name %></p>
+
+                  <p class="lead">Description:</p>
+                  <p class="card-text"> <%= truncate(restaurant.description, length: 200, separator: ' ') %></p>
+                  <hr class="my-4">
+                  <p class="lead">Address:</p>
+                    <p class="card-text"><%= restaurant.address %></p>
+                    <a href="/restaurants/<%= restaurant.id %>" class="btn btn-primary active" role="button" aria-pressed="true">Explore</a>
+                </div>
+            </div>
+        <% end %>
+     <% end %>
 
   </div>
    <div class="row col-md-12 mt-5">
